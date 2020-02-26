@@ -64,8 +64,8 @@ If something is lost or wrong it will fall back to default values and warn you i
 ![if something goes wrong...](img/error.svg)
 
 ## Options
-* **message** - Barcode message, obviously, this is **mandatory parameter**
+* **message** - barcode message, obviously, this is **mandatory parameter**
 
-* **dim** - is array of [ `width`, `height` ] in pixels, default value is: [ `320`, `80` ]. Set [ `0`, `80` ] and `width` will depend on the length of the horizontal generated Barcode. Set [ `80`, `0` ] and `height` will depend on the length of the vertical generated barcode.
+* **dim** - is array of [ `width`, `height` ] in pixels, default value is: [ `320`, `80` ]. Set [ `0`, `80` ] and `width` will depend on the length of the horizontal generated barcode. Set [ `80`, `0` ] and `height` will depend on the length of the vertical generated barcode.
 * **pad** - is array of [ `padding-x`, `padding-y` ] in pixels, default values is [ `20`, `16` ]. Set [ `0`, `0` ] to discard padding. If (any) padding value is greater than relative dimension value then barcode will be rotated by 180 degrees respectively.
 * **pal** - is array of [ `color`, `background-color` ] strings that represent hex color codes, default value is [ `'#000'` ] along with transparent background. Set [`'#000'`,`'#fff'`] to make background opaque.
