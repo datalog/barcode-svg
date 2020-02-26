@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8"/>
+	<style type="text/css">
+	
+		*		{padding:0; margin:0;}
+		svg		{border:1px #eee solid; display:inline-block; float:left;}
+
+	</style>
+
+	<script src="barcode.min.js"></script>
+</head>
+<body>
+
+<script>
+
+	'use strict';
+
+	var
+	barcodes = [
+
+		 BARCode('128 Barcode', {
+
+			 dim  : [ 80, 352 ] /* vertical */
+			,pad  : [ 16,  20 ] /* padding */
+			,pal  : ['#037','#cef'] /* palette */
+		})
+
+		,BARCode('RC123456789US') /* simple */
+
+		,BARCode('autowidth', {
+
+			 dim  : [   0, 80 ] /* depends on the length of generated barcode. */
+			,pal  : ['#037','#eef']
+		})
+
+		,BARCode('tra', {
+
+			 dim  : [   0,  0 ] /* depends on the length of generated barcode. */
+			,pal  : ['#17e'] /* transparent background */
+		})
+
+		,BARCode('padding', {
+
+			 dim  : [  0,  80 ]
+			,pad  : [ 16,  30 ] /* padding */
+			,pal  : ['#037','#cef']
+		})
+	];
+
+
+	/* do not try this at home... */
+	for( var c = 0; c < 500; c++ ) {
+
+		barcodes.push(
+
+			BARCode( ['1','2','3','4','5','6','7','8','9','0','bar','code','generator','git','hub','datalog','simple','poetry','cool','128bit','java','script','awesome'][ Math.floor( Math.random() * 23 ) ], {
+
+				 dim  : [ [ 0, 88, 120, 200, 320 ][ Math.floor( Math.random() * 5 ) ],  80 ]
+				,pad  : [ [ 6, 8, 10, 12, 14, 16 ][ Math.floor( Math.random() * 6 ) ],  [ 16, 18, 20, 22, 28 ][ Math.floor( Math.random() * 5 ) ] ]
+				,pal  : ['#' + Math.floor( Math.random() * 16777215 ).toString( 16 ) ] /* it MUST generate invalid color codes sometimes */
+			})
+		);
+	}
+
+
+	for( var c = 0; c < barcodes.length; c++ ) {
+
+		document.body.appendChild( barcodes[ c ] );
+	}
+
+</script>
+
+</body>
+</html>
