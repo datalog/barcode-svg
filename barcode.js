@@ -24,7 +24,7 @@ function BARCode( msg, opt ) {
 
 	function check( o ) {
 
-		for ( var r = 0, c = 0; c < o.length;) {
+		for( var r = 0, c = 0; c < o.length;) {
 
 			r += c128( o[ c ] ) * ( ++c );
 		}
