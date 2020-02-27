@@ -34,6 +34,17 @@ function BARCode( msg, opt ) {
 		return [ 1740,1644,1638,1176,1164,1100,1224,1220,1124,1608,1604,1572,1436,1244,1230,1484,1260,1254,1650,1628,1614,1764,1652,1902,1868,1836,1830,1892,1844,1842,1752,1734,1590,1304,1112,1094,1416,1128,1122,1672,1576,1570,1464,1422,1134,1496,1478,1142,1910,1678,1582,1768,1762,1774,1880,1862,1814,1896,1890,1818,1914,1602,1930,1328,1292,1200,1158,1068,1062,1424,1412,1232,1218,1076,1074,1554,1616,1978,1556,1146,1340,1212,1182,1508,1268,1266,1956,1940,1938,1758,1782,1974,1400,1310,1118,1512,1506,1960,1954,1502,1518,1886,1966,1668,1680,1692,6379 ][ i ].toString( 2 );
 	}
 
+	function bin( o ) {
+
+		var
+		r = [],
+		c = o.length;
+
+		while( c ) r[ --c ] = parseInt( o[ c ] );
+
+		return r;
+	}
+
 	function encode( o ) {
 
 		var
@@ -42,7 +53,7 @@ function BARCode( msg, opt ) {
 
 		while( c ) r[ --c ] = def( c128( o[ c ] ) );
 
-		return def( 104 ) + r.join('') + def( check( o ) + 1 ) + def( 106 );
+		return bin( def( 104 ) + r.join('') + def( check( o ) + 1 ) + def( 106 ) );
 	}
 
 	function abs( o ) {
@@ -83,9 +94,7 @@ function BARCode( msg, opt ) {
 		_er =  1;
 	}
 
-
 	msg = encode( msg );
-
 
 	var
 	 _l = msg.length,
@@ -118,7 +127,6 @@ function BARCode( msg, opt ) {
 		_py = _h;
 		console.warn('BCode: Expected {pad} value could not be bigger than {dim} value');
 	}
-
 
 	if( dir ) _sy = _l; else _sx = _l;
 
@@ -159,13 +167,12 @@ function BARCode( msg, opt ) {
 
 		while( c-- ) {
 
-			if( 1 == msg[ c ] ) d++;
+			if( msg[ c ] ) d++;
 
-			if( 1 !== msg[ c - 1 ] )
+			if( !msg[ c - 1 ] && d ) path += ( dir )
 
-				path += ( !dir )
-					? 'M' + c + ',1h' + d +'V0h-' + d + 'v1z'
-					: 'M1,' + c + 'H0v' + d + 'h1v-' + d + 'z', d = 0;
+				? 'M1,' + c + 'H0v' + d + 'h1v-' + d + 'z'
+				: 'M' + c + ',1h' + d +'V0h-' + d + 'v1z', d = 0;
 		}
 
 
