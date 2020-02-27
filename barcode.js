@@ -167,10 +167,9 @@ function BARCode( msg, opt ) {
 
 		while( c-- ) {
 
-			if( msg[ c ] ) d++;
+			if( msg[ c ] && ++d && !msg[ c - 1 ] )
 
-			if( !msg[ c - 1 ] && d ) path += ( dir )
-
+				path += ( dir )
 				? 'M1,' + c + 'H0v' + d + 'h1v-' + d + 'z'
 				: 'M' + c + ',1h' + d +'V0h-' + d + 'v1z', d = 0;
 		}
