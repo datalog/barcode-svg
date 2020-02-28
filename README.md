@@ -11,7 +11,7 @@ svgNode = new BARCode('Hello World!');
 ```
 
 ## Playground
-![svg barcode sample1](img/sample1.svg)[![svg barcode sample2](img/sample2.svg)]
+![svg barcode sample1](img/sample1.svg)![svg barcode sample2](img/sample2.svg)
 
 ```javascript
 BARCode('128 Code', {
