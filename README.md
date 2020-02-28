@@ -1,6 +1,6 @@
 ![SVG BAR Code Generator](img/barcode.svg)
 
-## Barcode svg generator ![license](img/license.svg)
+## Barcode svg generator [![LICENSE](img/license.svg)](/LICENSE)
 128 Barcode generator written on pure javascript. Produces highly optimized SVG nodes.
 
 ## Easy to start
@@ -11,7 +11,7 @@ svgNode = new BARCode('Hello World!');
 ```
 
 ## Playground
-![svg barcode sample1](img/sample1.svg)![svg barcode sample2](img/sample2.svg)
+![svg barcode sample1](img/sample1.svg)[![svg barcode sample2](img/sample2.svg)]
 
 ```javascript
 BARCode('128 Code', {
