@@ -1,7 +1,7 @@
 ![SVG BAR Code Generator](img/barcode.svg)
 
 ## Barcode svg generator [![LICENSE](img/license.svg)](/LICENSE)
-128 Barcode generator written on pure javascript. Produces highly optimized SVG nodes.
+128 Barcode generator written on pure javascript. Lightweight and cross browser, produces highly optimized SVG nodes.
 
 ## Easy to start
 After `barcode.min.js` is downloaded and connected to your html5 page, call:
