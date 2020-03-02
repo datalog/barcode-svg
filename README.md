@@ -24,7 +24,7 @@ BARCode('128 Code', {
 BARCode('128 Code', {
 
      dim  : [ 286, 80 ]
-    ,pad  : [ 266, 16 ] /* sample 2: ...and vertical flip */ 
+    ,pad  : [ 266, 16 ] /* sample 2: vertical flip */ 
 
 });
 ```
@@ -42,7 +42,7 @@ BARCode('vertical', {
 BARCode('vertical', {
 
      dim  : [ 80, 286 ]
-    ,pad  : [ 16, 266 ] /* sample 4: ...and horizontal flip */ 
+    ,pad  : [ 16, 266 ] /* sample 4: horizontal flip */ 
 
 });
 ```
