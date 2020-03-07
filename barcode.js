@@ -68,26 +68,26 @@ function BARCode( B ) {
 
 
 	var
-	b = ('string' == typeof B ) ? { msg : B } : B || {},
-
+	  b = ('string' == typeof B ) ? { msg : B } : B || {},
 	msg = b.msg,
-	 _l = 0,
+	dir = 0,
+	  l = 0,
 
 	dim = b.dim || [ 320, 80 ],
 	pad = b.pad || [  20, 16 ],
 	pal = b.pal || ['#000'],
 
-	 _w = abs( dim[ 0 ] ),
-	 _h = abs( dim[ 1 ] ),
-	_px = abs( pad[ 0 ] ),
-	_py = abs( pad[ 1 ] ),
-	_fg = pal[ 0 ],
-	_bg = pal[ 1 ],
+	  w = abs( dim[ 0 ] ),
+	  h = abs( dim[ 1 ] ),
+	 px = abs( pad[ 0 ] ),
+	 py = abs( pad[ 1 ] ),
+	 fg = pal[ 0 ],
+	 bg = pal[ 1 ],
 
-	_er = 0,
-	_sx = 1,
-	_sy = 1,
-	dir = 0;
+	 sx = 1,
+	 sy = 1,
+	 er = 0;
+
 
 
 	if( !msg || 'string' !== typeof msg ) {
@@ -95,45 +95,45 @@ function BARCode( B ) {
 		console.warn('BCode: Expected {msg} should be not empty string!');
 
 		msg = 'error!';
-		_er =  1;
+		 er =  1;
 	}
 
 	msg = encode( msg );
-	 _l = msg.length;
+	  l = msg.length;
 
 
 	/* ecc: reset to default values and relative width */
-	if( 0 == _w && 0 == _h ) _px = 20, _py = 16, _w = 2 * ( _l + _px ), _h = 80;
+	if( 0 == w && 0 == h ) px = 20, py = 16, w = 2 * ( l + px ), h = 80;
 
-	dir = _h > _w;
+	dir = h > w;
 
 	/* deal with auto width or height */
-	if( 0 == _w ) _w = 2 * ( _l + _px ), dir = 0;
-	if( 0 == _h ) _h = 2 * ( _l + _py ), dir = 1;
+	if( 0 == w ) w = 2 * ( l + px ), dir = 0;
+	if( 0 == h ) h = 2 * ( l + py ), dir = 1;
 
 
-	if( _w < _px ) {
+	if( w < px ) {
 
-		_px = _w;
+		px = w;
 		console.warn('BCode: Expected {pad} value could not be bigger than {dim} value');
 	}
 
-	if( _h < _py ) {
+	if( h < py ) {
 
-		_py = _h;
+		py = h;
 		console.warn('BCode: Expected {pad} value could not be bigger than {dim} value');
 	}
 
-	if( dir ) _sy = _l; else _sx = _l;
+	if( dir ) sy = l; else sx = l;
 
-	_sx = ( ( _w - ( 2 * _px ) ) / _sx ).toFixed( 4 );
-	_sy = ( ( _h - ( 2 * _py ) ) / _sy ).toFixed( 4 );
+	sx = ( ( w - ( 2 * px ) ) / sx ).toFixed( 4 );
+	sy = ( ( h - ( 2 * py ) ) / sy ).toFixed( 4 );
 
 
-	if( _er || !ishex( _fg ) || _bg && !ishex( _bg ) ) {
+	if( er || !ishex( fg ) || bg && !ishex( bg ) ) {
 
-		_fg = '#b11',
-		_bg = '#fee';
+		fg = '#b11',
+		bg = '#fee';
 		console.warn('BCode: Please, double check barcode params');
 	}
 
@@ -142,7 +142,7 @@ function BARCode( B ) {
 
 		function svg( n, a ) {
 
-			n = document.createElementNS( _ns, n );
+			n = document.createElementNS( ns, n );
 
 			for( var o in a || {} ) {
 
@@ -154,10 +154,10 @@ function BARCode( B ) {
 
 		var
 		r,
-		_ns = 'http://www.w3.org/2000/svg',
-
+		ns = 'http://www.w3.org/2000/svg',
 		path = '',
-		c = _l,
+
+		c = l,
 		d = 0;
 
 
@@ -175,24 +175,24 @@ function BARCode( B ) {
 
 		r = svg('svg', {
 
-					 'viewBox'		: [ 0, 0, _w, _h ].join(' ')
-					,'width'		:  _w
-					,'height'		:  _h
-					,'fill'			:  _fg
+					 'viewBox'		: [ 0, 0, w, h ].join(' ')
+					,'width'		:  w
+					,'height'		:  h
+					,'fill'			:  fg
 					,'shape-rendering'	: 'crispEdges'
-					,'xmlns'		:  _ns 
+					,'xmlns'		:  ns 
 					,'version'		: '1.1'
 				} );
 
-		if( _bg ) r.appendChild( svg('path', {
+		if( bg ) r.appendChild( svg('path', {
 
-					 'fill'			:  _bg
-					,'d'			: 'M0,0V' + _h + 'H' + _w + 'V0H0Z'
+					 'fill'			:  bg
+					,'d'			: 'M0,0V' + h + 'H' + w + 'V0H0Z'
 				} ) );
 
 		r.appendChild( svg('path', {
 
-					 'transform'		: 'matrix(' + [ _sx, 0, 0, _sy, _px, _py ] + ')'
+					 'transform'		: 'matrix(' + [ sx, 0, 0, sy, px, py ] + ')'
 					,'d'			:  path
 				} ) );
 
