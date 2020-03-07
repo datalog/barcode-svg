@@ -21,31 +21,35 @@
 	var
 	barcodes = [
 
-		 BARCode('128 Barcode', {
+		 BARCode({
 
-			 dim  : [ 80, 352 ] /* vertical */
-			,pad  : [ 16,  20 ] /* padding */
+		 	 msg  : '128 Barcode'
+			,dim  : [  80, 352 ] /* vertical */
+			,pad  : [  16,  20 ] /* padding */
 			,pal  : ['#037','#cef'] /* palette */
 		})
 
 		,BARCode('RC123456789US') /* simple */
 
-		,BARCode('autowidth', {
+		,BARCode({
 
-			 dim  : [   0, 80 ] /* depends on the length of generated barcode. */
+			 msg  : 'autowidth'
+			,dim  : [   0,  80 ] /* autowidth depends on the length of generated barcode. */
 			,pal  : ['#037','#eef']
 		})
 
-		,BARCode('demo', {
+		,BARCode({
 
-			 dim  : [   0, 80 ]
+			 msg  : 'demo'
+			,dim  : [   0,  80 ]
 			,pal  : ['#17e'] /* transparent background */
 		})
 
-		,BARCode('padding', {
+		,BARCode({
 
-			 dim  : [  0,  80 ]
-			,pad  : [ 16,  30 ] /* padding */
+			 msg  : 'padding'
+			,dim  : [   0,  80 ]
+			,pad  : [  16,  30 ] /* padding */
 			,pal  : ['#037','#cef']
 		})
 	];
@@ -56,9 +60,10 @@
 
 		barcodes.push(
 
-			BARCode( ['1','2','3','4','5','6','7','8','9','0','bar','code','generator','git','hub','datalog','simple','poetry','cool','128bit','java','script','awesome'][ Math.floor( Math.random() * 23 ) ], {
+			BARCode({
 
-				 dim  : [ [ 0, 88, 120, 200, 320 ][ Math.floor( Math.random() * 5 ) ],  80 ]
+				 msg  : ['1','2','3','4','5','6','7','8','9','0','bar','code','generator','git','hub','datalog','simple','poetry','cool','128bit','java','script','awesome'][ Math.floor( Math.random() * 23 ) ]
+				,dim  : [ [ 0, 88, 120, 200, 320 ][ Math.floor( Math.random() * 5 ) ],  80 ]
 				,pad  : [ [ 6, 8, 10, 12, 14, 16 ][ Math.floor( Math.random() * 6 ) ],  [ 16, 18, 20, 22, 28 ][ Math.floor( Math.random() * 5 ) ] ]
 				,pal  : ['#' + Math.floor( Math.random() * 16777215 ).toString( 16 ) ] /* it MUST generate invalid color codes sometimes */
 			})
