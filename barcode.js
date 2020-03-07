@@ -89,7 +89,6 @@ function BARCode( B ) {
 	 er = 0;
 
 
-
 	if( !msg || 'string' !== typeof msg ) {
 
 		console.warn('BCode: Expected {msg} should be not empty string!');
