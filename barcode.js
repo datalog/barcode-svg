@@ -9,7 +9,7 @@
 
 'use strict';
 
-function BARCode( msg, opt ) {
+function BARCode( B ) {
 
 	function c128( c ) {
 
@@ -68,23 +68,27 @@ function BARCode( msg, opt ) {
 
 
 	var
+	b = ('string' == typeof B ) ? { msg : B } : B || {},
+
+	msg = b.msg,
+	 _l = 0,
+
+	dim = b.dim || [  0,  0 ],
+	pad = b.pad || [ 20, 16 ],
+	pal = b.pal || ['#000'],
+
+	 _w = abs( dim[ 0 ] ),
+	 _h = abs( dim[ 1 ] ),
+	_px = abs( pad[ 0 ] ),
+	_py = abs( pad[ 1 ] ),
+	_fg = pal[ 0 ],
+	_bg = pal[ 1 ],
+
 	_er = 0,
 	_sx = 1,
 	_sy = 1,
-	dir = 0,
-	set = {
-		 dim  : [ 320, 80 ]
-		,pad  : [ 20, 16 ]
-		,pal  : ['#000']
-	};
+	dir = 0;
 
-	if( opt ) {
-
-		for( var c in opt ) {
-
-			set[ c ] = opt[ c ];
-		}
-	}
 
 	if( !msg || 'string' !== typeof msg ) {
 
@@ -95,15 +99,7 @@ function BARCode( msg, opt ) {
 	}
 
 	msg = encode( msg );
-
-	var
-	 _l = msg.length,
-	 _w = abs( set.dim[ 0 ] ),
-	 _h = abs( set.dim[ 1 ] ),
-	_px = abs( set.pad[ 0 ] ),
-	_py = abs( set.pad[ 1 ] ),
-	_fg = set.pal[ 0 ],
-	_bg = set.pal[ 1 ];
+	 _l = msg.length;
 
 
 	/* ecc: reset to default values and relative width */
