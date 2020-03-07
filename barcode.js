@@ -73,8 +73,8 @@ function BARCode( B ) {
 	msg = b.msg,
 	 _l = 0,
 
-	dim = b.dim || [  0,  0 ],
-	pad = b.pad || [ 20, 16 ],
+	dim = b.dim || [ 320,  0 ],
+	pad = b.pad || [  20, 16 ],
 	pal = b.pal || ['#000'],
 
 	 _w = abs( dim[ 0 ] ),
