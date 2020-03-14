@@ -9,7 +9,7 @@
 After `barcode.min.js` is downloaded and connected to your html5 page, call:
 ```javascript
 var
-svgNode = new BARCode('Hello World!');
+svgNode = BARCode('Hello World!');
 ```
 
 ## Playground
