@@ -1,10 +1,8 @@
 /**
 	https://github.com/datalog/barcode-svg
 	under MIT license
-
 	# barcode.js has no dependencies
-
-	Copyright (c) 2020 Constantine
+	Copyright (c) 2020-2026 Constantine
  */
 
 'use strict';
