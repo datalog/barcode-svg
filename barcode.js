@@ -21,7 +21,7 @@ function BARCode( B ) {
 	function check( o ) {
 
 		var
-		r = 0,
+		r = 104,
 		c = o.length;
 
 		while( c ) r += ( c-- ) * c128( o[ c ] );
@@ -55,7 +55,7 @@ function BARCode( B ) {
 
 		while( c ) r[ --c ] = def( c128( o[ c ] ) );
 
-		return bin( def( 104 ) + r.join('') + def( check( o ) + 1 ) + def( 106 ) );
+		return bin( def( 104 ) + r.join('') + def( check( o ) ) + def( 106 ) );
 	}
 
 	function abs( o ) {
